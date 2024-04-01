@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div class="results">
+        <h1 id="ScoreResult"></h1>
+    <p id="home" class="redirect" >Home</p>
+    </div>
+    
+
+</body>
+
+<!-- get script after loading body elements in html page -->
+<script src="score.js"></script>
+
+<style>
+    body{
+        background-color: teal;
+        font-family: Verdana;
+		text-align: center;
+    }
+    .results{
+        margin-top: 20%;
+    }
+    #home{
+    position: relative;
+    border: none;
+    height: 3em;
+    border-radius: 1.5em;
+    align-content: center;
+    letter-spacing: .05em;
+    font-size: 16px;
+    font-family: "nyt-franklin";
+    line-height: 40px;
+    cursor: pointer;
+    padding: 0 2em;
+    background: #000;
+    color: #fff;
+    font-weight: 400;
+	width: 25%;
+	margin: auto;
+
+    }
+    #home:hover{
+        color: aqua;
+        cursor: pointer;
+
+    }
+</style>
+</html>

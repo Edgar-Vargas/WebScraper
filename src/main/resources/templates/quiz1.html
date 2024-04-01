@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<title>
+		Quiz
+	</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+	crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+	<h3 id="QuestionHeader">Quiz</h3>
+	<h1 class="parent" id="prompt" th:text ="${data[nameArray[0]]}" ></h1>
+	<input type="hidden" id="AnswerName" th:value="${nameArray[0]}"/>
+	<input type="hidden" id="MapSize" th:value="${fullList.size}"/>
+
+
+	<!-- Create Form -->
+	<form id="form">
+		<div class="form-control">
+			<label for="role" id="label-role">
+				Select Answer
+			</label>
+			
+			<!-- Dropdown options -->
+			<form id="formId">
+			<select  id="WhatToUpdate">
+				<th:block th:each="name : ${fullList}">
+					<option id="playerChoice" th:value = "${name}" th:text=${name} ></option>
+				</th:block>
+			  </select>
+			  <input class="SubmitButton" id="SubmitButtonId" type="submit" name="SUBMITBUTTON" value="Submit" style="font-size:20px; "/>
+			</form>
+		</div>	
+		</button> 
+	</form>
+	
+	<p id="home" class="redirect">Home</p>
+</body>
+
+<!-- get script after loading body elements in html page -->
+<script src="quiz2.js"></script>
+
+<script src="score.js"></script>
+
+
+<style>
+
+	#home{
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+
+    }
+
+	#home:hover{
+		color: white;
+		cursor: pointer;
+	}
+	/* Styling the Body element 
+	i.e. Color, Font, Alignment */
+	body {
+		background-color: teal;
+		font-family: Verdana;
+		text-align: center;
+	}
+
+	/* Styling the Form (Color, Padding, Shadow) */
+	form {
+		background-color: #fff;
+		max-width: 500px;
+		margin: 50px auto;
+		padding: 30px 20px;
+		box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+		border-radius: 10px;
+	}
+
+	/* Styling form-control Class */
+	.form-control {
+		text-align: left;
+		margin-bottom: 25px;
+	}
+
+	/* Styling form-control Label */
+	.form-control label {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	/* Styling form-control input, 
+	select, textarea */
+	.form-control input,
+	.form-control select,
+	.form-control textarea {
+		border: 1px solid #777;
+		border-radius: 2px;
+		font-family: inherit;
+		padding: 10px;
+		display: block;
+		width: 95%;
+	}
+
+	/* Styling form-control Radio 
+	button and Checkbox */
+	.form-control input[type="radio"],
+	.form-control input[type="checkbox"] {
+		display: inline-block;
+		width: auto;
+	}
+
+	/* Styling Button */
+	button {
+		background-color: #05c46b;
+		border: 1px solid #777;
+		border-radius: 2px;
+		font-family: inherit;
+		font-size: 21px;
+		display: block;
+		width: 100%;
+		margin-top: 50px;
+		margin-bottom: 20px;
+	}
+	.SubmitButton{
+		margin-top: 25px;
+
+	}
+	.SubmitButton:hover, #WhatToUpdate:hover{
+		cursor:pointer;
+	}
+
+</style>
+
+</html>
