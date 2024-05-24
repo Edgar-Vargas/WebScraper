@@ -14,6 +14,7 @@ import com.APIv2.restProjectv2.model.Song;
 
 public class WebScraper {
     private static String URL = "https://www.lyrics.com";
+    //TODO this should be combines with artist name
     private static String ARTIST_URL = "https://www.lyrics.com/artist/";
     public WebScraper(){
    
@@ -21,11 +22,12 @@ public class WebScraper {
 
     }
 
-    public void addAlbumToDB(String albumName, String artist){
+    public ArrayList<Song> addAlbumToDB(String albumName, String artist){
         ArrayList<Song> songList = new ArrayList<>();
         //spaces use dashes in the Lyrics.com URLs
         String urlArtist = artist.replace(" ", "-");
-        String urlAlbumName = albumName.replace(" ", "-");
+        //String urlAlbumName = albumName.replace(" ", "-");
+        String urlAlbumName = albumName;
         //url paths for songs of the album
         ArrayList<String> songPaths = new ArrayList<>();
         //helper methods : find album path for URL
@@ -42,7 +44,7 @@ public class WebScraper {
             song.setArtistName(artist);
             songDao.addSong(song);
         }
-         
+         return songList;
     }
 
  
@@ -53,11 +55,11 @@ public class WebScraper {
     */
     public String webCrawlForAlbumPath(String albumName, String artist){
         // Example Path: "https://www.lyrics.com/artist/" + artist;
-        String query = "a:containsOwn(" + albumName + ")";
+        String query = "a:contains(" + albumName + ")";
         String albumPath = "";
         System.out.println(query);
         try{
-            Document document = Jsoup.connect(ARTIST_URL).get();
+            Document document = Jsoup.connect(ARTIST_URL + artist).get();
            
             Element lyrics = document.selectFirst(query);
             albumPath = lyrics.attr("href");

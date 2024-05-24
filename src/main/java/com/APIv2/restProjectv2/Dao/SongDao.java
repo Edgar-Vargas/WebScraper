@@ -14,15 +14,13 @@ public class SongDao {
     String URL = "jdbc:mysql://roundhouse.proxy.rlwy.net:43628/railway";
 
     public SongDao(){
-        // createTable();
-    //    addSong(null);
-    // testMethod();
-    // testMethod();
+    //testMethod();
+    //createTable();
+    
     }
-
+    //dropping table
     public void testMethod(){
         String sql = "DROP TABLE song_db";
-       
        
         try{
             Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);

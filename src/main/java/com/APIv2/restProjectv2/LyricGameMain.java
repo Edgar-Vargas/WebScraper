@@ -1,7 +1,7 @@
 package com.APIv2.restProjectv2;
 
 import java.util.ArrayList;
-
+import java.util.Scanner;
 import javax.sound.sampled.Line;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +27,29 @@ public class LyricGameMain {
 	public static void main(String[] args) {
 		
 		SpringApplication.run(LyricGameMain.class, args);
+
+		//user inputs and prompts
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter artist name: ");
+        String artistName = scanner.nextLine();
+        System.out.print("Enter album name: ");
+        String albumName = scanner.nextLine();
+		ArrayList<Song> songList = new ArrayList<>();
+
+		//TODO format album and artist name for case sensitive searches
+		//TODO display error if artist or album cant be found 
+
 		// Demo testDemo = new Demo();
-		// SongDao songDao = new SongDao();
-		// songDao.testMethod();
-		// songDao.createTable();
+		//SongDao songDao = new SongDao();
+	
 		WebScraper webScraper = new WebScraper();
-		webScraper.addAlbumToDB("Swimming", "Mac Miller");
-		webScraper.addAlbumToDB("The Divine Feminine", "Mac Miller");
-		FileManager mainTest = new FileManager();
-
-
+		//webScraper.addAlbumToDB("Swimming", "Mac Miller");
+		songList = webScraper.addAlbumToDB(albumName, artistName);
+		//FileManager mainTest = new FileManager();
+		for(Song song : songList){
+			System.out.println(song.getSongName());
+		}
+		scanner.close();
 		// songContainer = mainTest.fileStorageGetter(FOLDER_PATH);
 	
 	}
